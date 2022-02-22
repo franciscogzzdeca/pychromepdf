@@ -9,6 +9,7 @@ class ChromePDF(object):
         '--headless',
         '--disable-gpu',
         '--no-margins',
+        '--disable-dev-shm-usage',
     ]
 
     def __init__(self,chrome_exec,sandbox=True):
