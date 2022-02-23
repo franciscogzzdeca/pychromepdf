@@ -10,6 +10,10 @@ class ChromePDF(object):
         '--disable-gpu',
         '--no-margins',
         '--disable-dev-shm-usage',
+        '--full-memory-crash-report',
+        '--unlimited-storage',
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
     ]
 
     def __init__(self,chrome_exec,sandbox=True):
@@ -78,13 +82,13 @@ class ChromePDF(object):
         '''
 
         args = ['{chrome_exec}'] + self._chrome_options
-
+        
         if not sandbox:
             # Without sandbox
             args += ['--no-sandbox']
 
         args += ['--print-to-pdf={output_file}', '{input_url}']
-
+        print('-------------- args ----------------', args)
         return ' '.join(args).format(
             chrome_exec=chrome_exe,
             input_url=input_url,
